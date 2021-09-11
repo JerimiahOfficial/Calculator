@@ -28,16 +28,16 @@ constexpr uint32_t hash(const char* data, size_t const size) noexcept {
 }
 
 Operators hashit(std::string const& inString) {
-    if (inString == "a") 
+    if (inString == "add") 
         return addition;
 
-    if (inString == "s") 
+    if (inString == "sub") 
         return subtraction;
 
-    if (inString == "m") 
+    if (inString == "mul") 
         return multiplication;
 
-    if (inString == "d") 
+    if (inString == "div") 
         return division;
 
     if (inString == "mod")
@@ -47,10 +47,10 @@ Operators hashit(std::string const& inString) {
 void drawMenu() {
     std::string Menu[] = { 
         "Calculator",   // 0
-        "\ta - addition",   // 1
-        "\ts - subtraction",   // 2
-        "\td - division",   // 3
-        "\tm - multiplication",   // 4
+        "\tadd - addition",   // 1
+        "\tsub - subtraction",   // 2
+        "\tdiv - division",   // 3
+        "\tmul - multiplication",   // 4
         "\tmod - modulo"            // 5
     };
 
