@@ -13,3 +13,6 @@ To use multiplication you must enter `m <numbers>` and following it up with numb
 
 ### Division
 To use division you must enter `d <numbers>` and following it up with numbers, this divides all your numbers in order.
+
+### Modulo
+To use modulo you must enter `mod <numbers>` and following it up with numbers, this gets the remainder of all of your numbers divided.
