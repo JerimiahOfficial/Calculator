@@ -1,4 +1,4 @@
-﻿#include <string>
+#include <string>
 #include <sstream>
 #include <vector>
 #include <iostream>
@@ -7,13 +7,15 @@
 #include <valarray>
 #include <algorithm>
 
-float result;
+int iresult;
+float fresult;
 
 enum Operators {
     addition,
-    subtraction,
     division,
     multiplication,
+    subtraction,
+    modulo,
 };
 
 constexpr uint32_t hash(const char* data, size_t const size) noexcept {
@@ -37,6 +39,9 @@ Operators hashit(std::string const& inString) {
 
     if (inString == "d") 
         return division;
+
+    if (inString == "mod")
+        return modulo;
 }
 
 void drawMenu() {
@@ -46,9 +51,10 @@ void drawMenu() {
         "\ts - subtraction",   // 2
         "\td - division",   // 3
         "\tm - multiplication",   // 4
+        "\tmod - modulo"            // 5
     };
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 6; i++)
         std::cout << Menu[i] << std::endl;
 }
 
@@ -69,42 +75,53 @@ int main()
         arguments.erase(arguments.begin());
 
         for (auto i : arguments)
-            result += std::stof(i);
+            fresult += std::stof(i);
 
-        std::cout << result << std::endl;
+        std::cout << fresult << std::endl;
         break;
 
     case subtraction:
         std::cout << "----- subtraction -----" << std::endl;
         arguments.erase(arguments.begin());
 
-        result = std::stof(arguments[0]);
+        fresult = std::stof(arguments[0]);
         for (int i = 1; i < (int)arguments.size(); i++)
-            result -= std::stof(arguments[i]);
+            fresult -= std::stof(arguments[i]);
 
-        std::cout << result << std::endl;
+        std::cout << fresult << std::endl;
         break;
 
     case multiplication:
         std::cout << "----- multiplication -----" << std::endl;
         arguments.erase(arguments.begin());
 
-        result = std::stof(arguments[0]);
+        fresult = std::stof(arguments[0]);
         for (int i = 1; i < (int)arguments.size(); i++)
-            result *= std::stof(arguments[i]);
+            fresult *= std::stof(arguments[i]);
 
-        std::cout << result << std::endl;
+        std::cout << fresult << std::endl;
         break;
 
     case division:
         std::cout << "----- division -----" << std::endl;
         arguments.erase(arguments.begin());
 
-        result = std::stof(arguments[0]);
+        fresult = std::stof(arguments[0]);
         for (int i = 1; i < (int)arguments.size(); i++)
-            result /= std::stof(arguments[i]);
+            fresult /= std::stof(arguments[i]);
 
-        std::cout << result << std::endl;
+        std::cout << fresult << std::endl;
+        break;
+
+    case modulo:
+        std::cout << "----- modulo -----" << std::endl;
+        arguments.erase(arguments.begin());
+
+        iresult = std::stoi(arguments[0]);
+        for (int i = 1; i < (int)arguments.size(); i++)
+            iresult %= std::stoi(arguments[i]);
+
+        std::cout << iresult << std::endl;
         break;
 
     default:
