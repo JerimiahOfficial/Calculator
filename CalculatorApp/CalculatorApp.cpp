@@ -47,7 +47,6 @@ Operators hashit(std::string const& inString) {
 
     if (inString == "sub") 
         return Operators::subtraction;
-
 }
 
 void drawMenu() {
@@ -79,7 +78,7 @@ int main() {
     case Operators::addition:
         std::cout << "----- addition -----" << std::endl;
         arguments.erase(arguments.begin());
-
+        
         for (auto i : arguments)
             fresult += std::stof(i);
 
@@ -144,6 +143,8 @@ int main() {
     default:
         break;
     }
+
+    fresult, iresult = 0;
 
     for (int i = 0; i < 5; i++)
         std::cout << std::endl;
