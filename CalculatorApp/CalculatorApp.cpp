@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <valarray>
 #include <algorithm>
+#include <math.h>
 
 int iresult;
 float fresult;
@@ -13,6 +14,7 @@ float fresult;
 enum Operators {
     addition,
     division,
+    exponent,
     multiplication,
     subtraction,
     modulo,
@@ -31,35 +33,39 @@ Operators hashit(std::string const& inString) {
     if (inString == "add") 
         return addition;
 
-    if (inString == "sub") 
-        return subtraction;
-
-    if (inString == "mul") 
-        return multiplication;
-
-    if (inString == "div") 
+    if (inString == "div")
         return division;
+
+    if (inString == "exp")
+        return exponent;
+
+    if (inString == "mul")
+        return multiplication;
 
     if (inString == "mod")
         return modulo;
+
+    if (inString == "sub") 
+        return subtraction;
+
 }
 
 void drawMenu() {
     std::string Menu[] = { 
-        "Calculator",   // 0
-        "\tadd - addition",   // 1
-        "\tsub - subtraction",   // 2
-        "\tdiv - division",   // 3
+        "Calculator",               // 0
+        "\tadd - addition",         // 1
+        "\tdiv - division",         // 2
+        "\texp - exponent",         // 3
         "\tmul - multiplication",   // 4
         "\tmod - modulo"            // 5
+        "\tsub - subtraction",      // 6
     };
 
     for (int i = 0; i < 6; i++)
         std::cout << Menu[i] << std::endl;
 }
 
-int main()
-{
+int main() {
     drawMenu();
 
     std::string Command;
@@ -80,6 +86,50 @@ int main()
         std::cout << fresult << std::endl;
         break;
 
+    case division:
+        std::cout << "----- division -----" << std::endl;
+        arguments.erase(arguments.begin());
+        fresult = std::stof(arguments[0]);
+
+        for (int i = 1; i < (int)arguments.size(); i++)
+            fresult /= std::stof(arguments[i]);
+
+        std::cout << fresult << std::endl;
+        break;
+
+    case exponent:
+        std::cout << "----- exponent -----" << std::endl;
+        arguments.erase(arguments.begin());
+        fresult = std::stof(arguments[0]);
+
+        for (int i = 1; i < (int)arguments.size(); i++)
+            fresult = std::pow(fresult, std::stof(arguments[i]));
+
+        std::cout << fresult << std::endl;
+        break;
+
+    case multiplication:
+        std::cout << "----- multiplication -----" << std::endl;
+        arguments.erase(arguments.begin());
+        fresult = std::stof(arguments[0]);
+
+        for (int i = 1; i < (int)arguments.size(); i++)
+            fresult *= std::stof(arguments[i]);
+
+        std::cout << fresult << std::endl;
+        break;
+
+    case modulo:
+        std::cout << "----- modulo -----" << std::endl;
+        arguments.erase(arguments.begin());
+        iresult = std::stoi(arguments[0]);
+
+        for (int i = 1; i < (int)arguments.size(); i++)
+            iresult %= std::stoi(arguments[i]);
+
+        std::cout << iresult << std::endl;
+        break;
+
     case subtraction:
         std::cout << "----- subtraction -----" << std::endl;
         arguments.erase(arguments.begin());
@@ -89,44 +139,14 @@ int main()
             fresult -= std::stof(arguments[i]);
 
         std::cout << fresult << std::endl;
-        break;
-
-    case multiplication:
-        std::cout << "----- multiplication -----" << std::endl;
-        arguments.erase(arguments.begin());
-
-        fresult = std::stof(arguments[0]);
-        for (int i = 1; i < (int)arguments.size(); i++)
-            fresult *= std::stof(arguments[i]);
-
-        std::cout << fresult << std::endl;
-        break;
-
-    case division:
-        std::cout << "----- division -----" << std::endl;
-        arguments.erase(arguments.begin());
-
-        fresult = std::stof(arguments[0]);
-        for (int i = 1; i < (int)arguments.size(); i++)
-            fresult /= std::stof(arguments[i]);
-
-        std::cout << fresult << std::endl;
-        break;
-
-    case modulo:
-        std::cout << "----- modulo -----" << std::endl;
-        arguments.erase(arguments.begin());
-
-        iresult = std::stoi(arguments[0]);
-        for (int i = 1; i < (int)arguments.size(); i++)
-            iresult %= std::stoi(arguments[i]);
-
-        std::cout << iresult << std::endl;
-        break;
+        break;    
 
     default:
         break;
     }
 
-    system("pause");
+    for (int i = 0; i < 5; i++)
+        std::cout << std::endl;
+    
+    main();
 }                                                                                                                                                             
