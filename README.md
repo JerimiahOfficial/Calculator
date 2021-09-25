@@ -16,3 +16,6 @@ To use division you must enter `div <numbers>` and following it up with numbers,
 
 ### Modulo
 To use modulo you must enter `mod <numbers>` and following it up with numbers, this gets the remainder of all of your numbers divided.
+
+### Exponent
+To use exponent you must enter `exp <numbers>` and following it up with numbers, this will take the first number two the power of whatever number are inside the following arguments.
