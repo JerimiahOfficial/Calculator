@@ -3,19 +3,25 @@ A simple command based calculator coded in c++.
 
 # How to use
 ### Addition
-To use addition you must enter `add <number number ...>`, and will give you the sum of your numbers.
+Usage: `add <number number ...>`
+Returns you the sum of your numbers.
 
 ### Subtraction
-To use subtraction you must enter `sub <number number ...>`, this will subtract all your numbers from the first number.
+Usage: `sub <number number ...>`
+Returns result of first number subtract all the following numers.
 
 ### Multiplication
-To use multiplication you must enter `mul <number number ...>`, this multiply all your numbers together.
+Usage: `mul <number number ...>`
+Returns all the numbers you enter multiplied together.
 
 ### Division
-To use division you must enter `div <number number ...>`, this divides all your numbers in order.
+Usage: `div <number number ...>`
+Returns first number divided by the second then by third and etc.
 
 ### Modulo
-To use modulo you must enter `mod <number number ...>`, this gets the remainder of all of your numbers divided.
+Usage: `mod <number number ...>`
+Returns the remainder of first number divided by second, third and etc.
 
 ### Exponent
-To use exponent you must enter `exp <number number ...>`, this will take the first number to the power of whatever number are inside the following arguments.
+Usage: `exp <number number ...>`
+Retuns the first number to the exponent, and to the exponent of an exponent when adding more arguments.
