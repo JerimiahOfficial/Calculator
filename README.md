@@ -2,7 +2,7 @@
 A simple command based calculator coded in c++.
 
 # How to use
-### Addition
+## Addition
 Usage: `add <number number ...>`
 
 Returns you the sum of your numbers.
