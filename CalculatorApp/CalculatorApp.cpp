@@ -11,7 +11,7 @@
 int iresult;
 float fresult;
 
-enum Operators {
+enum class Operators {
     addition,
     division,
     exponent,
@@ -31,22 +31,22 @@ constexpr uint32_t hash(const char* data, size_t const size) noexcept {
 
 Operators hashit(std::string const& inString) {
     if (inString == "add") 
-        return addition;
+        return Operators::addition;
 
     if (inString == "div")
-        return division;
+        return Operators::division;
 
     if (inString == "exp")
-        return exponent;
+        return Operators::exponent;
 
     if (inString == "mul")
-        return multiplication;
+        return Operators::multiplication;
 
     if (inString == "mod")
-        return modulo;
+        return Operators::modulo;
 
     if (inString == "sub") 
-        return subtraction;
+        return Operators::subtraction;
 
 }
 
@@ -57,7 +57,7 @@ void drawMenu() {
         "\tdiv - division",         // 2
         "\texp - exponent",         // 3
         "\tmul - multiplication",   // 4
-        "\tmod - modulo"            // 5
+        "\tmod - modulo",           // 5
         "\tsub - subtraction",      // 6
     };
 
@@ -76,7 +76,7 @@ int main() {
 
     switch (hashit(arguments[0]))
     {
-    case addition:
+    case Operators::addition:
         std::cout << "----- addition -----" << std::endl;
         arguments.erase(arguments.begin());
 
@@ -86,7 +86,7 @@ int main() {
         std::cout << fresult << std::endl;
         break;
 
-    case division:
+    case Operators::division:
         std::cout << "----- division -----" << std::endl;
         arguments.erase(arguments.begin());
         fresult = std::stof(arguments[0]);
@@ -97,7 +97,7 @@ int main() {
         std::cout << fresult << std::endl;
         break;
 
-    case exponent:
+    case Operators::exponent:
         std::cout << "----- exponent -----" << std::endl;
         arguments.erase(arguments.begin());
         fresult = std::stof(arguments[0]);
@@ -108,7 +108,7 @@ int main() {
         std::cout << fresult << std::endl;
         break;
 
-    case multiplication:
+    case Operators::multiplication:
         std::cout << "----- multiplication -----" << std::endl;
         arguments.erase(arguments.begin());
         fresult = std::stof(arguments[0]);
@@ -119,7 +119,7 @@ int main() {
         std::cout << fresult << std::endl;
         break;
 
-    case modulo:
+    case Operators::modulo:
         std::cout << "----- modulo -----" << std::endl;
         arguments.erase(arguments.begin());
         iresult = std::stoi(arguments[0]);
@@ -130,7 +130,7 @@ int main() {
         std::cout << iresult << std::endl;
         break;
 
-    case subtraction:
+    case Operators::subtraction:
         std::cout << "----- subtraction -----" << std::endl;
         arguments.erase(arguments.begin());
 
