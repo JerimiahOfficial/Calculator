@@ -18,4 +18,4 @@ To use division you must enter `div <number number ...>`, this divides all your 
 To use modulo you must enter `mod <number number ...>`, this gets the remainder of all of your numbers divided.
 
 ### Exponent
-To use exponent you must enter `exp <number number ...>`, this will take the first number two the power of whatever number are inside the following arguments.
+To use exponent you must enter `exp <number number ...>`, this will take the first number to the power of whatever number are inside the following arguments.
