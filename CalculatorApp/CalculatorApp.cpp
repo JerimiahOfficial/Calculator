@@ -24,23 +24,12 @@ namespace calculator {
     }
 
     Operators hashit(std::string const& inString) {
-        if (inString == "add")
-            return Operators::add;
-
-        if (inString == "div")
-            return Operators::div;
-
-        if (inString == "exp")
-            return Operators::exp;
-
-        if (inString == "mul")
-            return Operators::mul;
-
-        if (inString == "mod")
-            return Operators::mod;
-
-        if (inString == "sub")
-            return Operators::sub;
+        if (inString == "add") return Operators::add;
+        if (inString == "div") return Operators::div;
+        if (inString == "exp") return Operators::exp;
+        if (inString == "mul") return Operators::mul;
+        if (inString == "mod") return Operators::mod;
+        if (inString == "sub") return Operators::sub;
     }
 
     void calculator() {
