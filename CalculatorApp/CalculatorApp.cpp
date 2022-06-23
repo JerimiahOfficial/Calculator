@@ -12,6 +12,7 @@ namespace calculator {
 		sub,
 		mod,
 		quit,
+		none,
 	};
 
 	Commands hashit(std::string const& inString) {
@@ -36,7 +37,7 @@ namespace calculator {
 		if (inString == "quit")
 			return Commands::quit;
 
-		throw std::runtime_error("Unknown command");
+		return Commands::none;
 	}
 
 	void calculator() {
