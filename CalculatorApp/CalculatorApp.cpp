@@ -15,49 +15,69 @@ namespace calculator {
 	};
 
 	Commands hashit(std::string const& inString) {
-		if (inString == "add") return Commands::add;
-		if (inString == "div") return Commands::div;
-		if (inString == "exp") return Commands::exp;
-		if (inString == "mul") return Commands::mul;
-		if (inString == "mod") return Commands::mod;
-		if (inString == "sub") return Commands::sub;
-		if (inString == "quit") return Commands::quit;
+		if (inString == "add")
+			return Commands::add;
+
+		if (inString == "div")
+			return Commands::div;
+
+		if (inString == "exp")
+			return Commands::exp;
+
+		if (inString == "mul")
+			return Commands::mul;
+
+		if (inString == "mod")
+			return Commands::mod;
+
+		if (inString == "sub")
+			return Commands::sub;
+
+		if (inString == "quit")
+			return Commands::quit;
+
+		throw std::runtime_error("Unknown command");
 	}
 
 	void calculator() {
 		Menu::drawMenu();
 
-		std::string Command;
-		std::getline(std::cin, Command);
+		// Get user input.
+		std::string input;
+		std::getline(std::cin, input);
 
-		std::istringstream iss(Command);
-		std::vector<std::string> arguments{ std::istream_iterator<std::string>(iss), {} };
-		std::vector<std::string> args = { arguments.begin() + 1, arguments.end() };
+		// Split string by spaces, separate arguments from input.
+		std::istringstream iss(input);
+		std::vector<std::string> tokens{ std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>{} };
+		std::vector<std::string> arguments{ tokens.begin() + 1, tokens.end() };
 
-		Commands op = hashit(arguments[0]);
-		switch (op) {
+		// Get command.
+		Commands command = hashit(tokens[0]);
+
+		// Execute command.
+		switch (command) {
 		case Commands::add:
-			Operations::add(args);
+			Operations::add(arguments);
 			break;
 
 		case Commands::div:
-			Operations::div(args);
+			Operations::div(arguments);
 			break;
 
 		case Commands::exp:
-			Operations::exp(args);
+			Operations::exp(arguments);
 			break;
 
 		case Commands::mul:
-			Operations::mul(args);
+			Operations::mul(arguments);
 			break;
 
 		case Commands::mod:
-			Operations::mod(args);
+			Operations::mod(arguments);
 			break;
 
 		case Commands::sub:
-			Operations::sub(args);
+			Operations::sub(arguments);
 			break;
 
 		case Commands::quit:
@@ -71,11 +91,11 @@ namespace calculator {
 
 		for (int i = 0; i < 5; i++)
 			std::cout << std::endl;
-
-		calculator();
 	}
 }
 
 int main() {
-	calculator::calculator();
+	while (true) {
+		calculator::calculator();
+	}
 }
