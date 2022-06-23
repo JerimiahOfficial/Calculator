@@ -9,6 +9,4 @@ namespace Operations {
 	extern void mul(std::vector<std::string> args);
 	extern void mod(std::vector<std::string> args);
 	extern void sub(std::vector<std::string> args);
-
-	extern void reset();
 }

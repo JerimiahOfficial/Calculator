@@ -4,31 +4,24 @@
 #include <sstream>
 
 namespace calculator {
-	enum class Operators {
+	enum class Commands {
 		add,
 		div,
 		exp,
 		mul,
 		sub,
 		mod,
+		quit,
 	};
 
-	constexpr uint32_t hash(const char* data, size_t const size) noexcept {
-		uint32_t hash = 5381;
-
-		for (const char* c = data; c < data + size; ++c)
-			hash = ((hash << 5) + hash) + (unsigned char)*c;
-
-		return hash;
-	}
-
-	Operators hashit(std::string const& inString) {
-		if (inString == "add") return Operators::add;
-		if (inString == "div") return Operators::div;
-		if (inString == "exp") return Operators::exp;
-		if (inString == "mul") return Operators::mul;
-		if (inString == "mod") return Operators::mod;
-		if (inString == "sub") return Operators::sub;
+	Commands hashit(std::string const& inString) {
+		if (inString == "add") return Commands::add;
+		if (inString == "div") return Commands::div;
+		if (inString == "exp") return Commands::exp;
+		if (inString == "mul") return Commands::mul;
+		if (inString == "mod") return Commands::mod;
+		if (inString == "sub") return Commands::sub;
+		if (inString == "quit") return Commands::quit;
 	}
 
 	void calculator() {
@@ -41,14 +34,39 @@ namespace calculator {
 		std::vector<std::string> arguments{ std::istream_iterator<std::string>(iss), {} };
 		std::vector<std::string> args = { arguments.begin() + 1, arguments.end() };
 
-		switch (hashit(arguments[0])) {
-		case Operators::add: Operations::add(args); break;
-		case Operators::div: Operations::div(args); break;
-		case Operators::exp: Operations::exp(args); break;
-		case Operators::mul: Operations::mul(args); break;
-		case Operators::mod: Operations::mod(args); break;
-		case Operators::sub: Operations::sub(args); break;
-		default: break;
+		Commands op = hashit(arguments[0]);
+		switch (op) {
+		case Commands::add:
+			Operations::add(args);
+			break;
+
+		case Commands::div:
+			Operations::div(args);
+			break;
+
+		case Commands::exp:
+			Operations::exp(args);
+			break;
+
+		case Commands::mul:
+			Operations::mul(args);
+			break;
+
+		case Commands::mod:
+			Operations::mod(args);
+			break;
+
+		case Commands::sub:
+			Operations::sub(args);
+			break;
+
+		case Commands::quit:
+			exit(0);
+			break;
+
+		default:
+			std::cout << "Invalid operator" << std::endl;
+			break;
 		}
 
 		for (int i = 0; i < 5; i++)

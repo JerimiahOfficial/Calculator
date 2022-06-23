@@ -1,75 +1,61 @@
 #include "Operators.h"
 #include <iostream>
 
-int iresult;
-float fresult;
-
 void Operations::add(std::vector<std::string> args) {
-	std::cout << "----- addition -----" << std::endl;
+	int result = 0;
 
-	for (auto i : args)
-		fresult += std::stof(i);
+	for (int i = 0; i < args.size(); i++)
+		result += std::stoi(args[i]);
 
-	std::cout << fresult << std::endl;
-	reset();
+	std::cout << "The sum of the numbers is: " << result << std::endl;
 }
 
 void Operations::div(std::vector<std::string> args) {
-	std::cout << "----- division -----" << std::endl;
-	fresult = std::stof(args[0]);
+	// Divide all the numbers in the vector
+	float result = std::stof(args[0]);
 
-	for (int i = 1; i < (int)args.size(); i++)
-		fresult /= std::stof(args[i]);
+	for (int i = 1; i < args.size(); i++)
+		result /= std::stof(args[i]);
 
-	std::cout << fresult << std::endl;
-	reset();
+	std::cout << "The result of the division is: " << result << std::endl;
 }
 
 void Operations::exp(std::vector<std::string> args) {
-	std::cout << "----- exponent -----" << std::endl;
-	fresult = std::stof(args[0]);
+	// Raise the first number to the power of the second number
+	float result = std::stof(args[0]);
 
-	for (int i = 1; i < (int)args.size(); i++)
-		fresult = std::pow(fresult, std::stof(args[i]));
+	for (int i = 1; i < args.size(); i++)
+		result = std::pow(result, std::stof(args[i]));
 
-	std::cout << fresult << std::endl;
-	reset();
+	std::cout << "The result of the exponentiation is: " << result << std::endl;
 }
 
 void Operations::mul(std::vector<std::string> args) {
-	std::cout << "----- multiplication -----" << std::endl;
-	fresult = std::stof(args[0]);
+	// Multiply all the numbers in the vector
+	int result = 1;
 
-	for (int i = 1; i < (int)args.size(); i++)
-		fresult *= std::stof(args[i]);
+	for (int i = 0; i < args.size(); i++)
+		result *= std::stoi(args[i]);
 
-	std::cout << fresult << std::endl;
-	reset();
+	std::cout << "The result of the multiplication is: " << result << std::endl;
 }
 
 void Operations::mod(std::vector<std::string> args) {
-	std::cout << "----- modulo -----" << std::endl;
-	iresult = std::stoi(args[0]);
+	// Modulo all the numbers in the vector
+	int result = std::stoi(args[0]);
 
-	for (int i = 1; i < (int)args.size(); i++)
-		iresult %= std::stoi(args[i]);
+	for (int i = 1; i < args.size(); i++)
+		result %= std::stoi(args[i]);
 
-	std::cout << iresult << std::endl;
-	reset();
+	std::cout << "The result of the modulo is: " << result << std::endl;
 }
 
 void Operations::sub(std::vector<std::string> args) {
-	std::cout << "----- subtraction -----" << std::endl;
+	// Subtract all the numbers in the vector
+	int result = std::stoi(args[0]);
 
-	fresult = std::stof(args[0]);
-	for (int i = 1; i < (int)args.size(); i++)
-		fresult -= std::stof(args[i]);
+	for (int i = 1; i < args.size(); i++)
+		result -= std::stoi(args[i]);
 
-	std::cout << fresult << std::endl;
-	reset();
-}
-
-void Operations::reset() {
-	iresult = 0;
-	fresult = 0;
+	std::cout << "The result of the subtraction is: " << result << std::endl;
 }
