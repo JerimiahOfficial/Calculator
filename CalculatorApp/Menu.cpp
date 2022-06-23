@@ -14,7 +14,6 @@ void Menu::drawMenu() {
 		"\tquit - quit",             // 7
 	};
 
-	// print menu with for loop and size of array
 	for (int i = 0; i < sizeof(Menu) / sizeof(Menu[0]); i++) {
 		std::cout << Menu[i] << std::endl;
 	}
